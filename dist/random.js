@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.randomString = void 0;
 var nums = "1234567890".split('');
 var letters = "abcdefghijklmnopqrstuvwxyz";
 var specialChars = "-".split('');
@@ -14,7 +15,7 @@ var choices = nums.concat(lowerCaseLetters, upperCaseLetters, specialChars);
  * @author Elijah Mooring
  * @file https://github.com/Vehmloewff/shineup/blob/master/lib/random.js
  */
-exports.randomString = function (length) {
+var randomString = function (length) {
     if (length === void 0) { length = 7; }
     var getChar = function () { return choices[Math.floor(Math.random() * choices.length)]; };
     var chars = "";
@@ -22,3 +23,4 @@ exports.randomString = function (length) {
         chars += getChar();
     return chars;
 };
+exports.randomString = randomString;

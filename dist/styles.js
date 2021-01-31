@@ -47,12 +47,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
+exports.createStyles = exports.attachStyles = void 0;
 var inject_1 = require("./inject");
 var parse_1 = require("./parse");
 var css_in_js_utils_1 = require("css-in-js-utils");
 var autoprefixer_1 = __importDefault(require("autoprefixer"));
 var postcss_1 = __importDefault(require("postcss"));
-exports.attachStyles = function (styles, key) {
+var attachStyles = function (styles, key) {
     if (styles === void 0) { styles = {}; }
     return __awaiter(void 0, void 0, void 0, function () {
         var str, css;
@@ -80,7 +81,8 @@ exports.attachStyles = function (styles, key) {
         });
     });
 };
-exports.createStyles = function (obj, key) {
+exports.attachStyles = attachStyles;
+var createStyles = function (obj, key) {
     if (obj === void 0) { obj = {}; }
     if (key === void 0) { key = 'svelte'; }
     var _a = parse_1.parse(obj, key), css = _a.css, classes = _a.classes;
@@ -98,3 +100,4 @@ exports.createStyles = function (obj, key) {
     else
         return classes;
 };
+exports.createStyles = createStyles;

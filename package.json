@@ -16,14 +16,14 @@
   "author": "hmmhmmhm",
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": "^9.7.3",
-    "css-in-js-utils": "^3.0.4",
+    "autoprefixer": "^10.2.4",
+    "css-in-js-utils": "^3.1.0",
     "deepmerge": "^4.2.2",
-    "flat": "^5.0.0",
-    "postcss": "^7.0.24",
+    "flat": "^5.0.2",
+    "postcss": "^8.2.4",
     "svelte": "*"
   },
   "devDependencies": {
-    "@types/node": "^12.7.5"
+    "@types/node": "^14.14.22"
   }
 }

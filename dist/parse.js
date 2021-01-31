@@ -11,8 +11,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
+exports.parse = exports.flattenObjectChildren = exports.getParent = exports.addDotToClassName = exports.isLayered = void 0;
 var flat_1 = __importDefault(require("flat"));
-exports.isLayered = function (obj) {
+var isLayered = function (obj) {
     var layerFound = false;
     for (var possibleLayer in obj) {
         if (!/^\$/.test(possibleLayer) &&
@@ -23,13 +24,15 @@ exports.isLayered = function (obj) {
     }
     return layerFound;
 };
-exports.addDotToClassName = function (className) {
+exports.isLayered = isLayered;
+var addDotToClassName = function (className) {
     if (!/^(\.|\$)/.test(className))
         return '.' + className;
     else
         return className;
 };
-exports.getParent = function (obj, delimiter) {
+exports.addDotToClassName = addDotToClassName;
+var getParent = function (obj, delimiter) {
     var returnObj = {};
     Object.keys(obj).forEach(function (key) {
         var roots = key.split(delimiter);
@@ -38,7 +41,8 @@ exports.getParent = function (obj, delimiter) {
     });
     return returnObj;
 };
-exports.flattenObjectChildren = function (obj, id) {
+exports.getParent = getParent;
+var flattenObjectChildren = function (obj, id) {
     var delimiter = "|";
     var savedObject = obj;
     var callAllFunctions = function (obj) {
@@ -100,7 +104,8 @@ exports.flattenObjectChildren = function (obj, id) {
     }
     return flat_1["default"].unflatten(newObj, { delimiter: delimiter });
 };
-exports.parse = function (obj, id) {
+exports.flattenObjectChildren = flattenObjectChildren;
+var parse = function (obj, id) {
     var _a;
     if (obj === void 0) { obj = {}; }
     if (id === void 0) { id = 'svelte'; }
@@ -128,3 +133,4 @@ exports.parse = function (obj, id) {
     var css = exports.flattenObjectChildren(obj, id);
     return { css: css, classes: classes };
 };
+exports.parse = parse;
